@@ -6,16 +6,16 @@ BASIC TRAVEL COST PER KM= 0.21€
 */
 
 //create variables age
-const age = parseInt(prompt("Quanti anni hai?"));
+const age = parseFloat(prompt("Quanti anni hai?"));
 
 //create variables trip
-const trip = parseInt(prompt("Quanti chilometri devi percorrere?"));
+const trip = parseFloat(prompt("Quanti chilometri devi percorrere?"));
 
 //create variables cost per km
-const costPerKm = .21
+const costPerKm = 0.21
 
 //create variables for basic cost
-const tripCost = parseInt(trip * costPerKm).toFixed(2)
+const tripCost = parseFloat(trip * costPerKm).toFixed(2)
 
 //create discounted variables
 const young = ((tripCost * 80) / 100 ).toFixed(2)
@@ -24,12 +24,15 @@ const elder = (((trip * costPerKm) * 60) / 100).toFixed(2)
 
 //create shortcut to print variable
 printCost = document.getElementById("trip_cost")
+prevCost = document.getElementById("full_price")
 
-//create variable discount based on age
+//display variable discount based on age
 if(age < 18){
-    printCost.innerHTML = `${young}`;
+    printCost.innerHTML =`Il costo del tuo biglietto è di: €${young}.`;
+    prevCost.innerHTML = `Il costo non scontato sarebbe stato di: €${tripCost}`;
 } else if(age >= 65) {
-    printCost.innerHTML = `${elder}`;
+    printCost.innerHTML =`Il costo del tuo biglietto è di: €${elder}.`; 
+    prevCost.innerHTML =`Il costo non scontato sarebbe stato di: €${tripCost}`;
 } else {
-    printCost.innerHTML = `${tripCost}`;
+    printCost.innerHTML = `Il costo del tuo biglietto è di: €${tripCost}`;
 }
